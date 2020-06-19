@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+
+  apis:
+    build:
+      context: apis/
+      dockerfile: Dockerfile.jvm
+    depends_on:
+      - db
+      - dns
+    ports:
+      - "8080:8080"
+    hostname: apis
+
+  db:
+    image: postgres:12.1
+    hostname: db
+    depends_on:
+      - dns
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ecommerce
+
+  flyway:
+    build:
+      context: apis/
+      dockerfile: Dockerfile-Flyway
+    entrypoint: /wait-for-postgres.sh db ecommerce postgres postgres
+    depends_on:
+      - db
+    volumes:
+      - ./apis/src/main/resources/db/migrations:/flyway/sql
+
+  dns:
+    image: defreitas/dns-proxy-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/resolv.conf:/etc/resolv.conf
+
+networks:
+  default:
+    driver: bridge
