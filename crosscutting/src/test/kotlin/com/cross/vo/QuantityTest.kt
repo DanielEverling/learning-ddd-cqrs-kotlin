@@ -55,5 +55,12 @@ internal class QuantityTest {
         currency.value `should be equal to` 0.0
     }
 
+    @Test
+    fun `should validate a quantity with value zero`() {
+        val currency = Quantity.zero()
+        val isValid = currency.valueBiggerThanZero("Invalid value")
+        isValid.get().notification `should be equal to` "Invalid value"
+    }
+
 }
 

@@ -1,4 +1,4 @@
-package com.learning.ddd.commons
+package com.totest.commons
 
 import java.sql.Connection
 import java.sql.DriverManager

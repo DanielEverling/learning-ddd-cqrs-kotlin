@@ -1,0 +1,43 @@
+{
+  "id": "80d0e745-b63b-4308-86b3-13d69ec4dec1",
+  "customer": "8164da40-af6f-4405-b1c8-d1a043193432",
+  "deliveryAddress": {
+    "street": "Rua Afonso Taunay",
+    "number": 180,
+    "city": "Porto Alegre",
+    "state": "RS",
+    "complement": "NA"
+  },
+  "items": [
+    {
+      "id": "c1766a2d-2a1a-40e5-b747-7bf8ca086441",
+      "product": "5febe4ce-9031-4706-801e-c0865cc89c54",
+      "quantity": 4,
+      "unitValue": 123.000000
+    },
+    {
+      "id": "ffa14788-92fd-471c-88fb-9a0e6f1e25a6",
+      "product": "5febe4ce-9031-4706-801e-c0865cc89c54",
+      "quantity": 40,
+      "unitValue": 412.120000
+    },
+    {
+      "id": "585a0951-f313-410d-a4c7-8c19a032d057",
+      "product": "5febe4ce-9031-4706-801e-c0865cc89c54",
+      "quantity": 90,
+      "unitValue": 1.440000
+    },
+    {
+      "id": "7d46d94e-94d2-4b8a-99ac-f6aa756f2ae4",
+      "product": "5febe4ce-9031-4706-801e-c0865cc89c54",
+      "quantity": 10,
+      "unitValue": 100.710000
+    },
+    {
+      "id": "b2586e18-d14f-49a6-8e20-5cbc0ab29003",
+      "product": "5febe4ce-9031-4706-801e-c0865cc89c54",
+      "quantity": 90,
+      "unitValue": 12.890000
+    }
+  ]
+}

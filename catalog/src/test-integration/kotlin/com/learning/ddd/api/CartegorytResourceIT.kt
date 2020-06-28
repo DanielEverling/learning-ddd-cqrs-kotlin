@@ -1,9 +1,9 @@
 package com.learning.ddd.api
 
 import com.learning.ddd.application.query.CategoryProjection
-import com.learning.ddd.commons.*
-import com.learning.ddd.commons.Gateway.post
-import com.learning.ddd.commons.Gateway.get
+import com.totest.commons.*
+import com.totest.commons.Gateway.post
+import com.totest.commons.Gateway.get
 import org.amshove.kluent.`should be equal to`
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
@@ -58,7 +58,7 @@ internal class CartegorytResourceIT {
         val response = post(companyResources, createCompanyRequest, List::class)
 
         response.first `should be equal to` HTTP_BAD_REQUEST
-        toJson(response.second) `should be strict` expectedCreateProductResponse
+        JSONAssert.assertEquals( toJson(response.second), expectedCreateProductResponse, JSONCompareMode.STRICT)
     }
 
     @Test
@@ -69,7 +69,7 @@ internal class CartegorytResourceIT {
         val response = post(companyResources, createCompanyRequest, List::class)
 
         response.first `should be equal to` HTTP_BAD_REQUEST
-        toJson(response.second) `should be strict` expectedCreateProductResponse
+        JSONAssert.assertEquals( toJson(response.second), expectedCreateProductResponse, JSONCompareMode.STRICT)
     }
 
 }

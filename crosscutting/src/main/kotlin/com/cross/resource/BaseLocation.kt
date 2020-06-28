@@ -8,6 +8,8 @@ enum class Resouces(val url: String) {
     CATEGORY_RESOURCE_FIND_BY_ID("${CATEGORY_RESOURCE.url}/id"),
     PRODUCT_RESOURCE("product"),
     PRODUCT_RESOURCE_FIND_BY_ID("${PRODUCT_RESOURCE.url}/id"),
+    ORDER_RESOURCE("order"),
+    ORDER_RESOURCE_FIND_BY_ID("${ORDER_RESOURCE.url}/id"),
 }
 
 class BaseLocation {

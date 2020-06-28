@@ -1,5 +1,6 @@
 package com.learning.ddd.application.domain
 
+import com.cross.domain.AggregateRoot
 import com.cross.domain.Entity
 import com.cross.domain.Notification
 import com.cross.domain.ResultEntity
@@ -7,7 +8,7 @@ import com.cross.extensions.isNullOrBlank
 import com.cross.extensions.validateSizeLessThan
 import java.util.*
 
-data class Category private constructor (val id: UUID = UUID.randomUUID(), val name: String) : Entity() {
+data class Category private constructor (val id: UUID = UUID.randomUUID(), val name: String) : Entity(), AggregateRoot {
 
     init {
         validate()

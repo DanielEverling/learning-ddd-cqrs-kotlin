@@ -1,11 +1,11 @@
 package com.learning.ddd.api
 
 import com.learning.ddd.application.query.ProductProjection
-import com.learning.ddd.commons.*
-import com.learning.ddd.commons.Gateway.post
-import com.learning.ddd.commons.Gateway.get
+import com.learning.ddd.commons.DomainHelpers
+import com.totest.commons.*
+import com.totest.commons.Gateway.post
+import com.totest.commons.Gateway.get
 import org.amshove.kluent.`should be equal to`
-import org.junit.After
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test

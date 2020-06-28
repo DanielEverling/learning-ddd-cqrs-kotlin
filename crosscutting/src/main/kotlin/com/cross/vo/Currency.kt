@@ -13,15 +13,21 @@ enum class CurrencyType {
 data class Currency constructor(private val _currency: CurrencyType, private val _amount: BigDecimal) {
 
     companion object {
-        inline fun of(currency: CurrencyType = BRL, amount: BigDecimal) = Currency(_currency = currency, _amount = amount)
+        inline fun of(amount: BigDecimal, currency: CurrencyType = BRL) = Currency(_currency = currency, _amount = amount)
 
-        inline fun of(currency: CurrencyType = BRL, amount: Double) = Currency(_currency = currency, _amount = BigDecimal(amount))
+        inline fun of(amount: Double, currency: CurrencyType = BRL) = Currency(_currency = currency, _amount = BigDecimal(amount))
 
-        inline fun of(currency: CurrencyType = BRL, amount: Int) = Currency(_currency = currency, _amount = BigDecimal(amount))
+        inline fun of(amount: Int, currency: CurrencyType = BRL) = Currency(_currency = currency, _amount = BigDecimal(amount))
 
         inline fun zero(currency: CurrencyType = BRL) = Currency(_currency = currency, _amount = BigDecimal.ZERO)
 
     }
+
+    operator fun times(amount: Double) = of(amount = _amount.multiply(BigDecimal(amount)))
+
+    operator fun times(amount: Int) = of(amount = _amount.multiply(BigDecimal(amount)))
+
+    operator fun times(amount: Quantity) = of(amount = _amount.multiply(BigDecimal(amount.value)))
 
     operator fun minus(amount: Double) = of(amount = _amount.subtract(BigDecimal(amount)))
 

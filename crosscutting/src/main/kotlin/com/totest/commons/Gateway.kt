@@ -1,4 +1,4 @@
-package com.learning.ddd.commons
+package com.totest.commons
 
 import com.google.gson.Gson
 import okhttp3.*

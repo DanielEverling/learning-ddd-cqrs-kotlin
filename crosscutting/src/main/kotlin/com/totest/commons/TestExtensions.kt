@@ -1,10 +1,8 @@
-package com.learning.ddd.commons
+package com.totest.commons
 
 import com.google.gson.Gson
-import com.nhaarman.mockito_kotlin.any
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.mockito.Mockito
 import java.util.Scanner
 
 val BASE_URL = "http://" + getEnv("APP_HOST", "localhost") + ":8080"

@@ -47,6 +47,19 @@ internal class CurrencyTest {
         }
     )
 
+    @TestFactory
+    fun `should multiply values`() = listOf(
+            DynamicTest.dynamicTest("should multiply values with double") {
+                (Currency.of(amount = 10.00) * 10).amountFormatted `should be equal to` Currency.of(amount = BigDecimal(100)).amountFormatted
+            },
+            DynamicTest.dynamicTest("should multiply values with int big decimal") {
+                (Currency.of(amount = 10.00) * Quantity.of(12)).amountFormatted `should be equal to` Currency.of(amount = BigDecimal(120)).amountFormatted
+            },
+            DynamicTest.dynamicTest("should multiply values with int quantity") {
+                (Currency.of(amount = 10.00) * 5.toDouble()).amountFormatted `should be equal to` Currency.of(amount = BigDecimal(50)).amountFormatted
+            }
+    )
+
     @Test
     fun `should create a currency with zero value`() {
         val currency = Currency.zero()

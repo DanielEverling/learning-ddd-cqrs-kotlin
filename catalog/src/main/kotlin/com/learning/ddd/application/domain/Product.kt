@@ -1,5 +1,6 @@
 package com.learning.ddd.application.domain
 
+import com.cross.domain.AggregateRoot
 import com.cross.domain.Entity
 import com.cross.domain.Notification
 import com.cross.domain.ResultEntity
@@ -14,7 +15,7 @@ data class Product(val id: UUID = UUID.randomUUID(),
                    val name: String,
                    val description: String,
                    val value: Currency,
-                   val category: Category) : Entity() {
+                   val category: Category) : Entity(), AggregateRoot {
 
     val active : Boolean = true
 

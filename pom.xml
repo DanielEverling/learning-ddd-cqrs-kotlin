@@ -10,6 +10,7 @@
   <modules>
     <module>apis</module>
     <module>catalog</module>
+    <module>sales</module>
     <module>crosscutting</module>
   </modules>
 
@@ -27,7 +28,7 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
     <apache.commons.lang.version>3.9</apache.commons.lang.version>
-    <exposed.version>0.25.1</exposed.version>
+    <exposed.version>0.26.1</exposed.version>
     <mockito.version>1.6.0</mockito.version>
     <kluent.version>1.61</kluent.version>
     <ok.client.version>2.7.5</ok.client.version>
