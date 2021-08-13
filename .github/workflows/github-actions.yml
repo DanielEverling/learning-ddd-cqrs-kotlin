@@ -42,10 +42,9 @@ jobs:
         ports:
           - "8180:8080"
         options: >-
-          --name keycloak
           --hostname keycloak
 
     steps:
       - name: executing integration tests
-        run: curl http://localhost:8180/auth
+        run: curl http://${{ job.services.keycloak.options['name'] }}:8180/auth
 
