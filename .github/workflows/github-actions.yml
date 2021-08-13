@@ -46,5 +46,6 @@ jobs:
 
     steps:
       - name: executing integration tests
-        run: curl http://${{ job.services.keycloak.options['name'] }}:8180/auth
+      - run: echo ${{ job.services.keycloak.options['name'] }}
+      - run: curl http://${{ job.services.keycloak.options['name'] }}:8180/auth
 
