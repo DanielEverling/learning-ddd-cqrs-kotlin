@@ -16,4 +16,4 @@ jobs:
       - name: compile project
         run: mvn clean install -DskipTests
       - name: unit tests
-          run: mvn test
+        run: mvn test
