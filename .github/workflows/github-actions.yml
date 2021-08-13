@@ -14,6 +14,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: compile project
-        run: mvn clean install -DSkipTest=true
+        run: mvn clean install -DskipTests
       - name: unit tests
           run: mvn test
