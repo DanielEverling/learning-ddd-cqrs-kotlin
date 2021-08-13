@@ -35,7 +35,7 @@ jobs:
         image: quay.io/keycloak/keycloak:15.0.1
         env:
           KEYCLOAK_USER: admin
-          KEYCLOAK_PASSWORD: keycloak
+          KEYCLOAK_PASSWORD: admin
         ports:
           - "8180:8080"
 
