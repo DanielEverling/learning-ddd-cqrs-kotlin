@@ -41,8 +41,9 @@ jobs:
           KEYCLOAK_PASSWORD: admin
         ports:
           - "8180:8080"
-        options:
-          --name keycloak --hostname keycloak
+        options: >-
+          --name keycloak
+          --hostname keycloak
 
     steps:
       - name: executing integration tests
