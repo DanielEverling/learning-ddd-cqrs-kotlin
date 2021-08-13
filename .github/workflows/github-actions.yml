@@ -41,9 +41,10 @@ jobs:
           KEYCLOAK_PASSWORD: admin
         ports:
           - "8180:8080"
-        options: --name keycloak --hostname keycloak
+        options: >-
+          -- health-cmd "curl -f http://localhost:8080/auth/realms/master"
 
     steps:
       - name: executing integration tests
-        run: curl http://keycloak:8180/auth
+        run: curl http://localhost:8180/auth
 
