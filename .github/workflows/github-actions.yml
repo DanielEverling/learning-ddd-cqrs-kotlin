@@ -42,7 +42,8 @@ jobs:
         ports:
           - "8180:8080"
         options: >-
-          -- health-cmd "curl -f http://localhost:8080/auth/realms/master"
+          --name keycloak
+          --hostname keycloak
 
     steps:
       - name: executing integration tests
