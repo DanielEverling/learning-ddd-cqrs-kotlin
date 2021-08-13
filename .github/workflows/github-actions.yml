@@ -3,6 +3,7 @@ name: Project CI
 on: [push]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
 
@@ -17,3 +18,31 @@ jobs:
         run: mvn clean install -DskipTests
       - name: unit tests
         run: mvn test
+
+  integration-test:
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      keycloak:
+        image: quay.io/keycloak/keycloak:15.0.1
+        env:
+          KEYCLOAK_USER: admin
+          KEYCLOAK_PASSWORD: keycloak
+        ports:
+          - "8180:8080"
+
+    runs-on:
+      ubuntu-latest
+
+    steps:
+      - name: executing integration tests
+        run: curl http://keycloak:8180/auth
+
