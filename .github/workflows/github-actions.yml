@@ -39,10 +39,18 @@ jobs:
         env:
           KEYCLOAK_USER: admin
           KEYCLOAK_PASSWORD: admin
+          KEYCLOAK_STATISTICS: http
         ports:
           - "8180:8080"
+          - "9990:9990"
+        options: >-
+          --health-cmd "curl -f http://localhost:9990/metrics/"
+          --health-interval 30s
+          --health-timeout 10s
+          --health-retries 5
+          --health-start-period 10s
 
     steps:
       - name: executing integration tests
-        run: echo "Success"
+        run: curl http://localhost:8180/auth
 
