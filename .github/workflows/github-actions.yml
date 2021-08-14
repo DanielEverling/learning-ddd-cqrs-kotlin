@@ -41,6 +41,11 @@ jobs:
           KEYCLOAK_PASSWORD: admin
         ports:
           - "8180:8080"
+        options: >-9990
+          --health-cmd curl http://localhost:8180/auth
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: executing integration tests
