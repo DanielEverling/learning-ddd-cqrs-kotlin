@@ -42,11 +42,11 @@ jobs:
         ports:
           - "8180:8080"
         options: >-
-        --health-cmd "curl -f http://localhost:8180/auth/"
-        --health-interval 30s
-        --health-timeout 10s
-        --health-retries 5
-        --health-start-period 10s
+          --health-cmd "curl -f http://localhost:8180/auth/"
+          --health-interval 30s
+          --health-timeout 10s
+          --health-retries 5
+          --health-start-period 10s
 
     steps:
       - name: executing integration tests
