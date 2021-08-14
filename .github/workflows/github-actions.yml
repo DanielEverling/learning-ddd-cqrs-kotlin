@@ -50,6 +50,7 @@ jobs:
 
     steps:
       - name: executing integration tests
+      - uses: actions/checkout@v2
       - run: echo "Success"
       - run: curl http://localhost:8180/auth
 
