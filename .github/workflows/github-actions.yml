@@ -41,7 +41,7 @@ jobs:
           KEYCLOAK_PASSWORD: admin
         ports:
           - "8180:8080"
-        options: >-9990
+        options: >-
           --health-cmd curl http://localhost:8180/auth
           --health-interval 10s
           --health-timeout 5s
