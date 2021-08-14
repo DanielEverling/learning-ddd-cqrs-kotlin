@@ -24,19 +24,6 @@ jobs:
       ubuntu-latest
 
     services:
-      keycloak:
-        image: quay.io/keycloak/keycloak:15.0.1
-        env:
-          KEYCLOAK_USER: admin
-          KEYCLOAK_PASSWORD: admin
-        ports:
-          - "8180:8080"
-        options: >-
-          --health-cmd "curl --fail http://0.0.0.0:8180 || exit 1"
-          --health-interval 15s
-          --health-timeout 45s
-          --health-retries 5
-
       postgres:
         image: postgres
         env:
@@ -47,8 +34,22 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+      keycloak:
+        image: quay.io/keycloak/keycloak:15.0.1
+        env:
+          KEYCLOAK_USER: admin
+          KEYCLOAK_PASSWORD: admin
+        ports:
+          - "8180:8080"
+        options: >-
+          --name keycloak
+          --hostname keycloak
+          --health-cmd "curl --fail http://keycloak:8180 || exit 1"
+          --health-interval 15s
+          --health-timeout 45s
+          --health-retries 5
 
     steps:
       - name: executing integration tests
-        run: echo "Success" && curl http://localhost:8180/auth
+        run: echo "Success" && curl http://keycloak:8180/auth
 
