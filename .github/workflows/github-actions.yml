@@ -41,11 +41,8 @@ jobs:
           KEYCLOAK_PASSWORD: admin
         ports:
           - "8180:8080"
-        options: >-
-          --hostname keycloak
 
     steps:
       - name: executing integration tests
-      - run: echo ${{ job.services.keycloak.options['name'] }}
-      - run: curl http://${{ job.services.keycloak.options['name'] }}:8180/auth
+        run: curl http://localhost:8180/auth
 
