@@ -51,5 +51,5 @@ jobs:
 
     steps:
       - name: executing integration tests
-        run: echo "Success" && curl http://keycloak:8180/auth
+        run: echo "Success" && curl http://keycloak:8080/auth
 
