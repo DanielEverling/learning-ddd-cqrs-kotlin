@@ -62,6 +62,8 @@ jobs:
     runs-on:
       ubuntu-latest
     steps:
+      - name: where am I
+        run: echo pwd
       - name: creating docker image
         run: docker build -f apis/Dockerfile.jvm -t quarkus/kotlin-quarkus-jvm .
       - name: publishing docker image
