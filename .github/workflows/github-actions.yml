@@ -20,6 +20,8 @@ jobs:
         run: mvn test
 
   integration-test:
+    needs:
+      - build
     runs-on:
       ubuntu-latest
 
@@ -53,3 +55,14 @@ jobs:
       - name: executing integration tests
         run: echo "Success" && curl http://localhost:8180/auth
 
+  creating-publishing-image:
+    needs:
+      - build
+      - integration-test
+    runs-on:
+      ubuntu-latest
+    steps:
+      - name: creating docker image
+        run: docker build -f apis/Dockerfile.jvm -t quarkus/kotlin-quarkus-jvm .
+      - name: publishing docker image
+        run: docker pull ghcr.io/danieleverling/kotlin-quarkus-jvm:latest
