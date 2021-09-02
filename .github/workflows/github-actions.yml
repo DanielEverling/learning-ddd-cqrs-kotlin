@@ -62,7 +62,6 @@ jobs:
     runs-on:
       ubuntu-latest
     steps:
-      - working-directory: 'apis'
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Build and push
@@ -71,3 +70,5 @@ jobs:
         with:
           push: true
           tags: learning-ddd-crqs-kotlin/app:latest
+          context: apis
+          file: apis/Dockerfile
