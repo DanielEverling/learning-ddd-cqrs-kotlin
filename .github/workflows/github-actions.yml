@@ -17,11 +17,12 @@ jobs:
         run: mvn clean install -DskipTests
       - name: unit tests
         run: mvn test
-      - name: copy jar
+      - name: create target folder in server
         run: mkdir -p target/
       - uses: actions/upload-artifact@v1
+        working-directory: apis
         with:
-          name: apis-1.0.0-SNAPSHOT-runner.jar
+          name: target/apis-1.0.0-SNAPSHOT-runner.jar
           path: target/
 
   integration-test:
