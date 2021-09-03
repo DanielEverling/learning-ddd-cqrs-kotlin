@@ -21,8 +21,7 @@ jobs:
         run: mkdir -p target/
       - uses: actions/upload-artifact@v1
         with:
-          working-directory: apis
-          name: target/apis-1.0.0-SNAPSHOT-runner.jar
+          name: apis/target/apis-1.0.0-SNAPSHOT-runner.jar
           path: target/
 
   integration-test:
