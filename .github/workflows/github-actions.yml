@@ -6,7 +6,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -18,6 +17,12 @@ jobs:
         run: mvn clean install -DskipTests
       - name: unit tests
         run: mvn test
+      - name: copy jar
+        run: mkdir -p target/
+      - uses: actions/upload-artifact@v1
+        with:
+          name: apis-1.0.0-SNAPSHOT-runner.jar
+          path: target/
 
   integration-test:
     needs:
@@ -62,7 +67,11 @@ jobs:
     runs-on:
       ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v1
+        with:
+          name: apis-1.0.0-SNAPSHOT-runner.jar
+          path: target/
       - name: Build the tagged Docker image
         working-directory: apis
         run: docker build -f Dockerfile.jvm -t learning-ddd-crqs-kotlin .
