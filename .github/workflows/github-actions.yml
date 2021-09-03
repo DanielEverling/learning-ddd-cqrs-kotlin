@@ -69,6 +69,3 @@ jobs:
           distribution: 'adopt'
       - name: package project
         run: mvn package
-      - name: Build the tagged Docker image
-        working-directory: apis
-        run: docker build -f Dockerfile.jvm -t learning-ddd-crqs-kotlin .
