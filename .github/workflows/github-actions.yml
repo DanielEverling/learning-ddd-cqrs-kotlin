@@ -64,6 +64,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the tagged Docker image
-        working-directory: ../apis
+        working-directory: apis
         run: docker build -f Dockerfile.jvm -t learning-ddd-crqs-kotlin .
 
