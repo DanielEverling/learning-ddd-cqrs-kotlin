@@ -70,5 +70,6 @@ jobs:
           distribution: 'adopt'
       - name: package project
         run: mvn package
-      - name: Build the tagged Docker image
+      - name: build image
+        working-directory: apis
         run: docker build . -f apis/Dockerfile -t app
