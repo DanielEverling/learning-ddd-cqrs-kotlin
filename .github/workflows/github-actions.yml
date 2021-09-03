@@ -17,13 +17,6 @@ jobs:
         run: mvn clean install -DskipTests
       - name: unit tests
         run: mvn test
-      - uses: actions/checkout@v1
-      - run: mkdir -p target/
-      - run: echo hello > apis/target/apis-1.0.0-SNAPSHOT-runner.jar
-      - uses: actions/upload-artifact@v1
-        with:
-          name: apis-1.0.0-SNAPSHOT-runner
-          path: target/
 
   integration-test:
     needs:
@@ -69,10 +62,13 @@ jobs:
       ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
+      - name: Set up JDK 11
+      - uses: actions/setup-java@v2
         with:
-          name: apis-1.0.0-SNAPSHOT-runner
-          path: target/
+          java-version: '11'
+          distribution: 'adopt'
+      - name: package project
+        run: mvn package
       - name: Build the tagged Docker image
         working-directory: apis
         run: docker build -f Dockerfile.jvm -t learning-ddd-crqs-kotlin .
