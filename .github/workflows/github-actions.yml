@@ -70,9 +70,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v1
-          with:
-            name: apis-1.0.0-SNAPSHOT-runner
-            path: target/
+        with:
+          name: apis-1.0.0-SNAPSHOT-runner
+          path: target/
     - name: Build the tagged Docker image
         working-directory: apis
         run: docker build -f Dockerfile.jvm -t learning-ddd-crqs-kotlin .
