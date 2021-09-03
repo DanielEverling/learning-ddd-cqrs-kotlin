@@ -64,5 +64,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the tagged Docker image
-        run: docker build . --file ../apis/Dockerfile --tag app:latest
+        working-directory: ./apis
+        run: docker build . -f Dockerfile -t app:latest
 
