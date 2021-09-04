@@ -73,5 +73,5 @@ jobs:
       - name: build image
         working-directory: apis
         run: docker build . -f Dockerfile.jvm -t app:latest
-      - name: build image
+      - name: push image
         run: docker push ghcr.io/danieleverling/app:latest
