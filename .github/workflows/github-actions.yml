@@ -72,9 +72,5 @@ jobs:
         run: mvn package
       - name: build image
         working-directory: apis
-        run: docker build . -f Dockerfile.jvm -t app
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: app:latest
+      - run: docker build . -f Dockerfile.jvm -t app:latest
+      - run: docker pull ghcr.io/danieleverling/app:latest
