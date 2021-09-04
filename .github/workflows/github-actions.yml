@@ -70,6 +70,8 @@ jobs:
           distribution: 'adopt'
       - name: package project
         run: mvn package
-      - name: build image and push
+      - name: build image
         working-directory: apis
-        run: docker build . -f Dockerfile.jvm -t app:latest && docker push ghcr.io/danieleverling/app:latest
+        run: docker build . -f Dockerfile.jvm -t ghcr.io/danieleverling/app:latest
+      - name: push image
+        run: docker push ghcr.io/danieleverling/app:latest
