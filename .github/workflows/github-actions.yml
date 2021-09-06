@@ -70,6 +70,8 @@ jobs:
           distribution: 'adopt'
       - name: package project
         run: mvn package
+      - name: login
+        run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
       - name: build image
         working-directory: apis
         run: docker build . -f Dockerfile.jvm -t ghcr.io/danieleverling/app:latest
